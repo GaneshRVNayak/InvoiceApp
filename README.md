@@ -1,5 +1,8 @@
 # Simple Invoicing Application
 
+This project is hosted in Azure and below is the link to test
+http://invoicingapplication.azurewebsites.net/
+
 **Functionality:**
 
 - Creating an invoice
