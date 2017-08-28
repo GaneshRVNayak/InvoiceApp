@@ -1,0 +1,60 @@
+﻿@using InvoiceApp.Models;
+@model InvoiceApp.Models.Invoice
+
+<script type="text/javascript" src="../../Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../../Scripts/editInvoice.js"></script>
+
+
+<h1 class="title">Edit Invoice</h1>
+
+<form action="/Invoice/Edit" method="post">
+
+    <p>
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, new { @class = "name" })
+        @Html.ValidationMessageFor(model => model.Name)
+    </p>
+
+	<p>
+        @Html.LabelFor(model => model.Email)
+        @Html.TextBoxFor(model => model.Email, new { @class = "email" })
+        @Html.ValidationMessageFor(model => model.Email)
+    </p>
+
+    <p>
+        @Html.LabelFor(model => model.DueDate)
+        @Html.TextBoxFor(model => model.DueDate, new { @class = "duedate" })
+        @Html.ValidationMessageFor(model => model.DueDate)
+    </p>
+
+    <div id="invoiceList">
+        Description
+        Amount
+        @for (int i = 0; i < Model.InvoiceDetails.Count(); i++)
+        {
+            <div class="invoiceRow">
+                @Html.TextBoxFor(model => Model.InvoiceDetails[i].Description, new { @class = "description" })
+                @Html.TextBoxFor(model => Model.InvoiceDetails[i].Amount, new { @class = "amount" })
+                @Html.ValidationMessageFor(model => Model.InvoiceDetails[i].Amount)
+               
+                <a href="javascript:void(0);" class="remRow">Remove</a>
+            </div>
+        }
+    </div>
+
+    <p>
+         <input type="button" name="add" class="addRow"/>
+    </p>
+
+    <p>
+        <input type="submit" name="btnSubmit" value="Edit invoice" class="editInvoice" />
+    </p>
+
+	<div class="totalPreview" style="display:none">
+        <label style="font-weight:bold"> TOTAL </label>
+        <input disabled="disabled" readonly="readonly" name="total" class="totalvalue"/>
+                        
+    </div>
+
+</form>
+

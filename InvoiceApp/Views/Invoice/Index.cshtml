@@ -1,0 +1,74 @@
+﻿@using InvoiceApp.Models;
+@model IEnumerable<InvoiceApp.Models.Invoice>
+
+<h1>Invoices</h1>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+		<th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+		<th>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+			Amount
+		</th>
+		 <th>
+            Edit
+        </th>
+		 <th>
+            Preview
+        </th>
+    </tr>
+
+    @foreach (var invoice in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(model => invoice.Name)
+            </td>
+		<td>
+                @Html.DisplayFor(model => invoice.Email)
+            </td>
+		<td>
+                @Html.DisplayFor(model => invoice.DueDate)
+            </td>
+            <td>
+                <ul>
+                    @foreach (InvoiceDetail invoiceDetail in invoice.InvoiceDetails)
+                    {
+                        <li>@(invoiceDetail.Description)</li>
+                    }
+                </ul>
+            </td>
+		<td>
+                <ul>
+                    @foreach (InvoiceDetail invoiceDetail in invoice.InvoiceDetails)
+                    {
+                        <li>@(invoiceDetail.Amount)</li>
+                    }
+                </ul>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { invoiceID = invoice.ID })
+            </td>
+		 <td>
+                @Html.ActionLink("Preview", "Edit", new { invoiceID = invoice.ID, preview=true })
+            </td>
+        </tr>
+    }
+
+</table>
