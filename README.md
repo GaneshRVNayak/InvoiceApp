@@ -1,4 +1,4 @@
-# InvoiceApp
+# Simple Invoicing Application
 
 **Functionality:**
 
