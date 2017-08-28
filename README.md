@@ -1,5 +1,7 @@
 # Simple Invoicing Application
 
+**Hosting**
+
 This project is hosted in Azure and below is the link to test
 http://invoicingapplication.azurewebsites.net/
 
